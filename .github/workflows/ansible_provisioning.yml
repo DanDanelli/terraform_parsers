@@ -12,7 +12,8 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+env:
+  EC2_PRIVATE_IPS: "10.32.76.29,10.32.67.162"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -25,10 +26,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Get EC2 private ips
+
       - name: Ansible Provisioning Repo Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.ACTIONS_KEY }}
           repository: dandanelli/ansible_ec2_provisioning
           event-type: provisioning
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          client-payload: '{"ref": "${{  github.ref }}", "ec2_private_ips": "${{ $EC2_PRIVATE_IPS }}"}'
