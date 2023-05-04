@@ -32,4 +32,4 @@ jobs:
           token: ${{ secrets.ACTIONS_KEY }}
           repository: dandanelli/ansible_ec2_provisioning
           event-type: provisioning
-          client-payload: '{"ref": "${{  github.ref }}", "ec2_private_ips": "${{ $EC2_PRIVATE_IPS }}"}'
+          client-payload: '{"ref": "${{  github.ref }}", "ec2_private_ips": "${{ EC2_PRIVATE_IPS }}"}'
