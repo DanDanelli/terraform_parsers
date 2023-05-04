@@ -26,8 +26,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Get EC2 private ips
-
       - name: Ansible Provisioning Repo Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
