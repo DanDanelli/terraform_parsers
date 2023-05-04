@@ -26,15 +26,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: Install jq
-        run: |
-            sudo apt install -y jq
-      - name: Set env
-        run: echo "EC2_PRIVATE_IPS=$(jq 'join(",") ${{ env.TF_OUTPUT }}')" >> $GITHUB_ENV
       - name: Ansible Provisioning Repo Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.ACTIONS_KEY }}
           repository: dandanelli/ansible_ec2_provisioning
           event-type: provisioning
-          client-payload: '{"ref": "${{  github.ref }}", "ec2_private_ips": "${{ env.EC2_PRIVATE_IPS }}"}'
+          client-payload: '{"ref": "${{  github.ref }}", "ec2_private_ips": "${{ env.TF_OUTPUT }}"}'
