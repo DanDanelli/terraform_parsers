@@ -1,21 +1,21 @@
-name: provisioning
+name: workflow_01
 on:
   workflow_dispatch:
      inputs:
-       ansible_ec2_provisioning:
-        description: 'ًWorkflow which will be triggered'
+      workflow_02:
+        description: 'ًWorkflow 2 which will be triggered'
         required: true
-        default: 'ansible_provisioning'
+        default: 'workflow_02'
 
-       ansible_ec2_provisioning_github_account:
+      workflow2_github_account:
         description: 'GitHub Account Owner'
         required: true
-        default: 'DanDanelli'
+        default: ':DanDanelli'
 
-       ansible_ec2_provisioning_repo_github:
+      workflow2_repo_github:
         description: 'repo-name'
         required: true
-        default: 'ansible_ec2_provisioning' 
+        default: ':ansible_ec2_provisioning' 
 
 jobs:
   build:
