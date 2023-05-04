@@ -7,12 +7,12 @@ on:
         required: true
         default: 'ansible_provisioning'
 
-      ansible_ec2_provisioning_github_account:
+       ansible_ec2_provisioning_github_account:
         description: 'GitHub Account Owner'
         required: true
         default: 'DanDanelli'
 
-      ansible_ec2_provisioning_repo_github:
+       ansible_ec2_provisioning_repo_github:
         description: 'repo-name'
         required: true
         default: 'ansible_ec2_provisioning' 
